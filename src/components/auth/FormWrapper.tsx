@@ -18,7 +18,7 @@ export const FormWrapper = ({ subtitle, fields, status, footer }: Props) => {
       <div className="flex flex-col items-center gap-4">
         <img src="/stv_logo.png" alt="stv logo" className="w-[72.5px]" />
         <h1 className="text-4xl font-medium">STV Jonen</h1>
-        <div className="text-2xl">{subtitle}</div>
+        <div className="text-center text-2xl">{subtitle}</div>
       </div>
       {status && status.type === "success" ? (
         <FormSuccess message={status.message} />

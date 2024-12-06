@@ -2,7 +2,15 @@ import { IconInput } from "../IconInput";
 import { Button } from "../ui/button";
 import { FormWrapper } from "./FormWrapper";
 
-export const ResetPasswordForm = () => {
+type Props = {
+  status?: {
+    type: "error" | "success";
+    message: string;
+    action?: () => React.ReactNode;
+  };
+};
+
+export const ResetPasswordForm = ({ status }: Props) => {
   return (
     <FormWrapper
       subtitle="Neues Passwort definieren"
@@ -16,6 +24,7 @@ export const ResetPasswordForm = () => {
           />
         </div>
       )}
+      status={status}
       footer={() => <Button className="w-full">Neues Passwort setzen</Button>}
     />
   );

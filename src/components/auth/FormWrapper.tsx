@@ -8,6 +8,7 @@ type Props = {
   status?: {
     type: "error" | "success";
     message: string;
+    action?: () => React.ReactNode;
   };
   footer?: () => React.ReactNode;
 };
@@ -21,7 +22,14 @@ export const FormWrapper = ({ subtitle, fields, status, footer }: Props) => {
         <div className="text-center text-2xl">{subtitle}</div>
       </div>
       {status && status.type === "success" ? (
-        <FormSuccess message={status.message} />
+        !status.action ? (
+          <FormSuccess message={status.message} />
+        ) : (
+          <div className="flex flex-col items-center gap-4">
+            <FormSuccess message={status.message} />
+            {status.action()}
+          </div>
+        )
       ) : (
         <>
           {fields ? <>{fields()}</> : null}
